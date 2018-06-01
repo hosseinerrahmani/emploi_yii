@@ -45,4 +45,12 @@ class Ensignent extends \yii\db\ActiveRecord
             'date_naissance' => 'Date Naissance',
         ];
     }
+
+    /**
+     * get teacher and module associated
+     *
+     */
+    public function getEnsignentmodule(){
+        return $this->hasMany(Ensignentmodule::className(),['id_ensig'=>'id']);
+    }
 }

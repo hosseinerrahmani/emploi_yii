@@ -119,8 +119,12 @@ class ModuleController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $module = $this->findModel($id);
+        foreach ($module->ensignentmodule as $item)
+            $item->delete();
+        foreach ($module->groupemodule as $item)
+            $item->delete();
+        $module->delete();
         return $this->redirect(['index']);
     }
 

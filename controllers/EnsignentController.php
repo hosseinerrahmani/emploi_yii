@@ -119,7 +119,12 @@ class EnsignentController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $teacher = $this->findModel($id);
+
+        foreach ($teacher->ensignentmodule as $item)
+            $item->delete();
+
+        $teacher->delete();
 
         return $this->redirect(['index']);
     }

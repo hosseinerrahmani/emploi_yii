@@ -44,4 +44,20 @@ class Module extends \yii\db\ActiveRecord
             'description' => 'Description',
         ];
     }
+
+
+    /**
+     * get teacher and module associated
+     *
+     */
+    public function getEnsignentmodule(){
+        return $this->hasMany(Ensignentmodule::className(),['id_module'=>'id']);
+    }
+    /**
+     * get programme associated
+     *
+     */
+    public function getGroupemodule(){
+        return $this->hasMany(Groupemodule::className(),['id_module'=>'id']);
+    }
 }

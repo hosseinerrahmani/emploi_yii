@@ -119,8 +119,10 @@ class GroupController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $group = $this->findModel($id);
+        foreach ($group->groupemodule as $item)
+            $item->delete();
+        $group->delete();
         return $this->redirect(['index']);
     }
 
